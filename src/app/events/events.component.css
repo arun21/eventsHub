@@ -1,0 +1,18 @@
+.ng-select.custom {
+  min-height: 0px;
+}
+.ng-select.dropdown {
+  border: 1px solid black;
+}
+
+div.img {
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.title {
+  font-weight: bold;
+}
+
+.ng-dropdown-panel {
+  width: auto !important;
+}

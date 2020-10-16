@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="container mb-3 mr-4 mt-5" style="padding-left: 1px">
+    <ng-select
+      [ngStyle]="{ width: getWidth() }"
+      [items]="countries"
+      bindLabel="Name"
+      bindValue="Code"
+      placeholder="Select Country"
+      [(ngModel)]="selectedCountry"
+      (change)="onSelectCountry($event)"
+    >
+    </ng-select>
+    <div
+      *ngIf="selectedCountry && events.length > 0"
+      class="text-left text-uppercase text-primary mt-3"
+      role="alert"
+    >
+      <p class="">
+        Top Events Happening Today
+        <span class="title">[{{ today | date: "mediumDate" }}]</span> in
+        <span class="title">{{ getCountry() }}</span>
+      </p>
+    </div>
+  </div>
+  <div
+    class="card border-secondary mb-3 mr-4 mt-2"
+    style="max-width: 20rem"
+    *ngFor="let event of events"
+  >
+    <div class="card text-center">
+      <div class="card-header img">
+        <img
+          class="text-left"
+          src="../../assets/images/news.png"
+          alt="World_Image"
+          width="70"
+          height="60"
+          opacity="100"
+        />
+        <p class="mt-2 text-center title text-danger">
+          {{ event.source.name }}
+        </p>
+        <div class="text-muted">
+          {{ event.publishedAt | date: "mediumTime" }}
+        </div>
+        <div class="mt-2 card-footer">
+          <a class="pt-2" href="{{ event.url }}" target="_blank"
+            >Click here to open news link</a
+          >
+        </div>
+      </div>
+      <div class="card-body text-info" style="height: 200px">
+        <h5 class="card-text">{{ event.title }}</h5>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="events.length == 0" class="pt-5" role="alert">
+    <p class="alert alert-danger">
+      Sorry, There are no news headlines for {{ getCountry() }}
+    </p>
+  </div>
+</div>
