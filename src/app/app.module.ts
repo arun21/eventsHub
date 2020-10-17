@@ -9,10 +9,12 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { EventsComponent } from './events/events.component';
 import { EspecialComponent } from './especial/especial.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 
 @NgModule({
@@ -30,11 +32,17 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       preventDuplicates: true
     })
   ],
-  providers: [AuthService, EventService],
+  providers: [AuthService, AuthGuard, EventService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

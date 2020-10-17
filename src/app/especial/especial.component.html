@@ -1,3 +1,54 @@
-<p>
-  especial works!
-</p>
+<div class="row">
+  <div class="container mb-3 mt-5" style="padding-left: 1px">
+    <div class="text-left text-uppercase text-primary mt-3">
+      <p style="text-align: center; font-weight: bold">
+        Popular Events in {{ getCountry() }}
+      </p>
+      <p class="text-info">Total Events: {{ specialEvents.length }}</p>
+    </div>
+  </div>
+  <div
+    class="row card border-secondary mb-3 mr-4 mt-2"
+    style="max-width: 15rem"
+    *ngFor="let event of specialEvents"
+  >
+    <img
+      class="card-img-top"
+      src="{{ event.images[0].url }}"
+      alt="World_Image"
+      width="60"
+      height="120"
+    />
+    <div class="card-body">
+      <div class="text-wrap title text-primary">
+        {{ event.name || "Top Event" }}
+      </div>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="text-muted">
+          {{ event.dates.start.dateTime | date: "medium" }}
+        </div>
+      </li>
+      <li class="list-group-item">
+        <label class="text-danger">Genre:</label>
+        {{
+          event.classifications[0].genre?.name ||
+            event.classifications[0].segment?.name
+        }}
+      </li>
+      <li class="list-group-item">
+        <div>
+          <a class="btn btn-primary" href="{{ event.url }}" target="_blank">
+            Buy Tickets
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="specialEvents.length == 0" class="pt-5" role="alert">
+    <p class="alert alert-danger">
+      Sorry, There are no events happening in {{ getCountry() }}
+    </p>
+  </div>
+</div>

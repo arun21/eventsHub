@@ -28,7 +28,7 @@ export class EventsComponent implements OnInit {
     listedCountries.forEach((country) => {
       this.countries.push(totalList.find(t => t.Code.toLowerCase() === country));
     });
-    this.selectedCountry = 'IN';
+    this.selectedCountry = 'CA';
   }
 
   onSelectCountry(event: any) {

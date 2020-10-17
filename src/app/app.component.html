@@ -15,22 +15,59 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/top-events" routerLinkActive="active">
-          TopEvents
+          Headlines
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/top-events" routerLinkActive="active">
-          Members
+        <a
+          class="nav-link"
+          routerLink="/special-events"
+          routerLinkActive="active"
+        >
+          Events
         </a>
       </li>
     </ul>
     <ul class="navbar-nav">
-      <a class="nav-link" routerLink="/register" routerLinkActive="active">
+      <a
+        class="nav-link"
+        *ngIf="!auth.loggedIn()"
+        routerLink="/register"
+        routerLinkActive="active"
+      >
         Register
       </a>
-      <a class="nav-link" routerLink="/login" routerLinkActive="active">
+      <a
+        class="nav-link"
+        *ngIf="!auth.loggedIn()"
+        routerLink="/login"
+        routerLinkActive="active"
+      >
         Login
       </a>
+      <li
+        class="nav-item dropdown"
+        *ngIf="auth.loggedIn()"
+        style="cursor: pointer"
+      >
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          {{ localStorageItem("email") }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"
+            ><span class="bold">Country:</span> {{ getCountry() }}</a
+          >
+          <a class="dropdown-item" (click)="_auth.logOutUser()"> Logout </a>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

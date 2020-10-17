@@ -4,3 +4,7 @@ footer {
   text-align: center;
   color: white;
 }
+
+span.bold {
+  font-weight: bold;
+}

@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { EspecialComponent } from './especial/especial.component';
@@ -16,8 +17,9 @@ const routes: Routes = [
     component: EventsComponent
   },
   {
-    path: 'especial',
-    component: EspecialComponent
+    path: 'special-events',
+    component: EspecialComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',

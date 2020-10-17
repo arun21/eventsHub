@@ -1,36 +1,59 @@
 <div class="row pt-5">
   <div class="col-md-6 mx-auto">
-    <div class="card text-white border-secondary mb-3">
-      <div class="card-header bg-secondary">
+    <div class="card text-white border-info mb-3">
+      <div class="card-header bg-info">
         <h3 class="mb-0">Register</h3>
       </div>
       <div class="card-body">
-        <form class="form">
+        <form
+          [formGroup]="registerForm"
+          (ngSubmit)="registerUser()"
+          class="form"
+        >
+          <div *ngIf="submitted && f.email.errors" class="text-danger">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
           <div class="form-group">
-            <label>Email</label>
             <input
               [(ngModel)]="registerUserData.email"
               name="email"
+              formControlName="email"
+              placeholder="Email"
               type="text"
               class="form-control rounded-0"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
               required
             />
           </div>
+          <div *ngIf="submitted && f.password.errors" class="text-danger">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
           <div class="form-group">
-            <label>Password</label>
             <input
               [(ngModel)]="registerUserData.password"
               name="password"
+              formControlName="password"
+              placeholder="Password"
               type="password"
               class="form-control rounded-0"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
               required
             />
           </div>
+          <div *ngIf="submitted && f.country.errors" class="text-danger">
+            <div *ngIf="f.country.errors.required">Country is required</div>
+          </div>
           <div class="form-group">
-            <label>Country</label>
             <ng-select
               [items]="countries"
               name="country"
+              formControlName="country"
               bindLabel="Name"
               bindValue="Code"
               placeholder="Select Your Home Country"
@@ -41,7 +64,7 @@
           <button
             (click)="registerUser()"
             type="button"
-            class="btn btn-primary float-right mt-3"
+            class="btn btn-info float-right mt-3"
           >
             Register
           </button>

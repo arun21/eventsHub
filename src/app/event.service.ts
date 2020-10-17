@@ -22,8 +22,9 @@ export class EventService {
     return this.http.get<any>(this._eventsUrl);
   }
 
-  getSpecialEvents() {
-    return this.http.get<any>(this._specialeventsUrl);
+  getSpecialEvents(code) {
+    const params = new HttpParams().set('code', code);
+    return this.http.get<any>(this._specialeventsUrl, { params });
   }
 
   getCountry(code: any = null) {

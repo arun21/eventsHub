@@ -10,13 +10,15 @@ export class NotificationService {
 
   showSuccess(message: any, title: any) {
     this.toastr.success(message, title, {
-      timeOut: 5000
+      timeOut: 5000,
+      positionClass: 'toast-top-center'
     });
   }
 
   showError(message: any, title: any) {
     this.toastr.error(message, title, {
-      timeOut: 5000
+      timeOut: 5000,
+      positionClass: 'toast-top-center',
     });
   }
 }
