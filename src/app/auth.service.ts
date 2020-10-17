@@ -8,9 +8,9 @@ import { NotificationService } from './notification.service';
 })
 export class AuthService {
 
-  private _registerUrl = 'http://localhost:3000/api/register';
-  private _loginUrl = 'http://localhost:3000/api/login';
-  private _checkUserUrl = 'http://localhost:3000/api/checkUser';
+  private _registerUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/register';
+  private _loginUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/login';
+  private _checkUserUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/checkUser';
 
   constructor(private http: HttpClient, private router: Router, private notifyService: NotificationService) { }
 

@@ -12,9 +12,9 @@ export interface Country {
 })
 export class EventService {
 
-  private _eventsUrl = 'http://localhost:3000/api/top-events';
-  private _topheadlinesUrl = 'http://localhost:3000/api/top-headlines';
-  private _specialeventsUrl = 'http://localhost:3000/api/special';
+  private _eventsUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/top-events';
+  private _topheadlinesUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/top-headlines';
+  private _specialeventsUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/special';
 
   constructor(private http: HttpClient) { }
 
