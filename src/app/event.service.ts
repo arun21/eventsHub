@@ -12,9 +12,9 @@ export interface Country {
 })
 export class EventService {
 
-  private _eventsUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/top-events';
-  private _topheadlinesUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/top-headlines';
-  private _specialeventsUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/special';
+  private _eventsUrl = 'https://meowing-sulfuric-hole.glitch.me/api/top-events';
+  private _topheadlinesUrl = 'https://meowing-sulfuric-hole.glitch.me/api/top-headlines';
+  private _specialeventsUrl = 'https://meowing-sulfuric-hole.glitch.me/api/special';
 
   constructor(private http: HttpClient) { }
 

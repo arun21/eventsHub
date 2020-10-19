@@ -8,9 +8,9 @@ import { NotificationService } from './notification.service';
 })
 export class AuthService {
 
-  private _registerUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/register';
-  private _loginUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/login';
-  private _checkUserUrl = 'http://events.ca-central-1.elasticbeanstalk.com/api/checkUser';
+  private _registerUrl = 'https://meowing-sulfuric-hole.glitch.me/api/register';
+  private _loginUrl = 'https://meowing-sulfuric-hole.glitch.me/api/login';
+  private _checkUserUrl = 'https://meowing-sulfuric-hole.glitch.me/api/checkUser';
 
   constructor(private http: HttpClient, private router: Router, private notifyService: NotificationService) { }
 
